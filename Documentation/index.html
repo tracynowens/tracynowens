@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Documentation</title>
+		<!-- Bootstrap -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/prettify.css" rel="stylesheet">
+		<link href="css/main.css" rel="stylesheet">
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		<script src="js/html5shiv.js"></script>
+		<script src="js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+		<header class="navbar navbar-inverse navbar-fixed-top docs-nav" role="banner">
+			<div class="container">
+				<div class="navbar-header">
+					<button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a href="#" class="navbar-brand" alt="Choco Pixel">
+					<img src="img/logo.png">
+					</a>
+				</div>
+			</div>
+		</header>
+		<div class="container docs-container">
+			<div class="row">
+				<div class="col-md-3">
+					<div class="sidebar hidden-print affix-top" role="complementary">
+						<div id="toc">
+							<ul class="nav sidenav">
+								<li class="active"><a href="#introduction">Introduction</a></li>
+								<li>
+									<a href="#common-settings">Common settings</a>
+									<ul class="nav">
+										<li><a href="#modifying-contact-email">Modifying contact email</a></li>
+										<li><a href="#modifying-twitter-feed">Modifying twitter feed</a></li>
+									</ul>
+								</li>
+								<li>
+									<a href="#image-template">Image template</a>
+									<ul class="nav">
+										<li><a href="#modifying-background-image">Modifying background image</a></li>
+									</ul>
+								</li>
+								<li>
+									<a href="#slideshow-template">Slideshow template</a>
+									<ul class="nav">
+										<li><a href="#changing-carousel-images">Modifying slideshow images</a></li>
+									</ul>
+								</li>
+								<li>
+									<a href="#video-template">Video template</a>
+									<ul class="nav">
+										<li><a href="#adding-youtube-video">Adding a youtube video</a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-9" role="main">
+					<div class="docs-section">
+						<div class="page-header">
+							<h1 id="introduction">Introduction</h1>
+						</div>
+						<p>First of all thank you for purchasing the template. If you have any questions that are beyond the scope of this help file, please feel free to email at <a href="mailto:support@choco-pixel.com">support@choco-pixel.com</a>. 
+						Any improvement or suggestion for some new feature will also be welcomed.
+						</p>
+						<p>The documentation bellow is divided into sections for each version of template, starting with common instructions.</p>
+					</div>
+					<div class="docs-section">
+						<div class="page-header">
+							<h1 id="common-settings">Common settings</h1>
+						</div>
+						
+						<h2 id="modifying-contact-email">Modifying contact e-mail</h2>
+						<ol >
+							<li>Open <code>php/include/settings.php</code></li>
+							<li>Enter your desired e-mail address <code>$to = 'YOUR-EMAIL-ADDRESS';</code>
+						</ol>
+						<p><b>Example:</b> <a href="#">contact@mydomain.com</a>  would look like: <code>$to = 'contact@mydomain.com';</code></p>
+
+						
+						<h2 id="modifying-twitter-feed">Modifying Twitter feed</h2>
+						
+						<ol >
+							<li>Go to <a href="http://www.twitter.com">twitter.com</a> and sign in</li>
+							<li>Go to your settings page</li>
+							<li>Go to "Widgets"</li>
+							<li>Create a new widget</li>
+							<li>Check "exclude replies"</li>
+							<li>Go back to settings page, and then go back to widgets page and you should see the widget you just created. Click edit.</li>
+							<li>Look at the URL in your web browser, you will see the ID (for example <code>345735908357048478</code>)</li>
+							<li>Copy the ID and replace it in <b>Twitter</b> section in <code>assets/js/app.js</code> file</li>
+						</ol>
+						<p><b>Example:</b> <code>345735908357048478</code> would look like:</p>
+
+
+<pre class="prettyprint lang-java">
+twitterFetcher.fetch({
+  "id": '345735908357048478',
+  "domId": '',
+  "maxTweets": 3,
+  "enableLinks": true,
+  ...
+</pre>
+						
+						
+						<div class="page-header">
+							<h1 id="image-template">Image template</h1>
+						</div>
+						<h2 id="modifying-background-image">Modifying background image</h2>
+						<ol>
+							<li>Open <code>js/app.js</code></li>
+							<li>In section <code>Background</code>, replace the path to image, <code>$.backstretch("PATH/TO/IMAGE");</code></li>
+						</ol>
+						<p><b>Example:</b> for image <i>myBackgroundImage.jpg</i> would look like: <code>$.backstretch("PATH/TO/myBackgroundImage.jpg");</code></p>
+						
+						
+						
+						<div class="page-header">
+							<h1 id="slideshow-template">Slideshow template</h1>
+						</div>
+						<h2 id="modifying-slideshow-images">Modifying slideshow images</h2>
+						<ol >
+							<li>Open <code>js/app.js</code></li>
+							<li>In section <code>Background</code>, replace the paths to images, 
+<pre class="prettyprint lang-java">
+$.backstretch([
+	"PATH/TO/IMAGE-1",
+	"PATH/TO/IMAGE-2",
+	"PATH/TO/IMAGE-3",
+	...
+], {duration: 3800, fade: 1500});
+</pre>
+							<li>The <code>duration</code> denotes how much time the image stays visible before <code>fade</code>ing out.</li>
+							</li>
+						</ol>
+						<p><b>Example:</b> for images <i>myBackgroundImage-1.jpg</i>, <i>myBackgroundImage-2.jpg</i>, <i>myBackgroundImage-3.jpg</i> 
+						would look like:</p>
+						<pre class="prettyprint lang-java">
+$.backstretch([
+	"PATH/TO/myBackgroundImage-1.jpg",
+	"PATH/TO/myBackgroundImage-2.jpg",
+	"PATH/TO/myBackgroundImage-3.jpg"
+], {duration: 3800, fade: 1500});
+								</pre>
+						
+						
+						
+						<div class="page-header">
+							<h1 id="video-template">Video template</h1>
+						</div>
+						<h2 id="adding-youtube-video">Adding youtube video</h2>
+						
+						<div class="alert alert-warning alert-dismissible" role="alert">
+						  <strong>Warning!</strong> The video will not play, if the theme is not running on the server.
+						</div>
+						
+						<ol >
+							<li>Open <code>js/app.js</code></li>
+							<li>In section <code>Background video</code>, replace the id with your desired video <code>videoId:'YOUTUBE-VIDEO-ID'</code></li>
+						</ol>
+						<p><b>Example:</b> for Youtube video with <a href="#">https://www.youtube.com/watch?v=ab0TSkLe-E0</a> url would look like: <code>videoId:'ab0TSkLe-E0'</code></p>
+				</div>
+			</div>
+		</div>
+		<footer class="bs-footer" role="contentinfo">
+			<div class="container">
+				<p>2014, <a href="#">Choco Pixel</a> documentation for SeventyFour template</p>
+			</div>
+		</footer>
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="js/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/prettify/prettify.js"></script>
+		<script>
+			!function ($) {
+			
+			  $(function () {
+			
+			    // IE10 viewport hack for Surface/desktop Windows 8 bug
+			    //
+			    // See Getting Started docs for more information
+			    if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+			      var msViewportStyle = document.createElement('style')
+			      msViewportStyle.appendChild(
+			        document.createTextNode(
+			          '@-ms-viewport{width:auto!important}'
+			        )
+			      )
+			      document.querySelector('head').appendChild(msViewportStyle)
+			    }
+			
+			    var $window = $(window)
+			    var $body   = $(document.body)
+			
+			    $body.scrollspy({
+			      target: '.sidebar'
+			    });
+			
+			    $window.on('load', function () {
+			      $body.scrollspy('refresh')
+			    });
+			
+			    $('.docs-container [href=#]').click(function (e) {
+			      e.preventDefault()
+			    })
+			
+			    // back to top
+			    setTimeout(function () {
+			      var $sideBar = $('.sidebar')
+			
+			      $sideBar.affix({
+			        offset: {
+			          top: function () {
+			            var offsetTop      = $sideBar.offset().top
+			            var sideBarMargin  = parseInt($sideBar.children(0).css('margin-top'), 10)
+			            var navOuterHeight = $('.docs-nav').height()
+			
+			            return (this.top = offsetTop - navOuterHeight - sideBarMargin)
+			          },
+			          bottom: function () {
+			            return (this.bottom = $('.bs-footer').outerHeight(true))
+			          }
+			        }
+			      })
+			    }, 100);
+			
+			    setTimeout(function () {
+			      $('.top').affix()
+			    }, 100);
+				
+				window.prettyPrint && prettyPrint()
+			
+			  })
+			
+			}(jQuery)
+				
+		</script>
+	</body>
+</html>
